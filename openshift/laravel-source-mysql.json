@@ -270,7 +270,7 @@
         }
       },
       "spec": {
-        "dockerImageRepository": "getupcloud/sti-php-extra"
+        "dockerImageRepository": "getupcloud/sti-php-extra:5.5"
       }
     }
   ],
