@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export_vars=$(cgroup-limits); export $export_vars
-export DOCUMENTROOT=${DOCUMENTROOT:-/public}
+export DOCUMENTROOT=${DOCUMENTROOT:-/}
 # Default php.ini configuration values, all taken
 # from php defaults.
 export ERROR_REPORTING=${ERROR_REPORTING:-E_ALL & ~E_NOTICE}
@@ -20,8 +20,8 @@ export OPCACHE_REVALIDATE_FREQ=${OPCACHE_REVALIDATE_FREQ:-2}
 export PHPRC=${PHPRC:-/opt/rh/php55/root/etc/php.ini}
 export PHP_INI_SCAN_DIR=${PHP_INI_SCAN_DIR:-/opt/rh/php55/root/etc/php.d}
 
-# envsubst < /opt/app-root/etc/php.ini.template > /opt/rh/php55/root/etc/php.ini
-# envsubst < /opt/app-root/etc/php.d/opcache.ini.template > /opt/rh/php55/root/etc/php.d/opcache.ini
+envsubst < /opt/app-root/etc/php.ini.template > /opt/rh/php55/root/etc/php.ini
+envsubst < /opt/app-root/etc/php.d/opcache.ini.template > /opt/rh/php55/root/etc/php.d/opcache.ini
 
 export HTTPD_START_SERVERS=${HTTPD_START_SERVERS:-8}
 export HTTPD_MAX_SPARE_SERVERS=$((HTTPD_START_SERVERS+10))
