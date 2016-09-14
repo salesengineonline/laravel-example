@@ -91,7 +91,8 @@
         },
         "triggers": [
           {
-            "type": "imageChange"
+            "type": "imageChange",
+            "imageChange": {}
           },
           {
             "type": "github",
