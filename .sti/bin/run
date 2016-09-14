@@ -20,8 +20,8 @@ export OPCACHE_REVALIDATE_FREQ=${OPCACHE_REVALIDATE_FREQ:-2}
 export PHPRC=${PHPRC:-/opt/rh/php55/root/etc/php.ini}
 export PHP_INI_SCAN_DIR=${PHP_INI_SCAN_DIR:-/opt/rh/php55/root/etc/php.d}
 
-envsubst < /opt/app-root/etc/php.ini.template > /opt/rh/php55/root/etc/php.ini
-envsubst < /opt/app-root/etc/php.d/opcache.ini.template > /opt/rh/php55/root/etc/php.d/opcache.ini
+# envsubst < /opt/app-root/etc/php.ini.template > /opt/rh/php55/root/etc/php.ini
+# envsubst < /opt/app-root/etc/php.d/opcache.ini.template > /opt/rh/php55/root/etc/php.d/opcache.ini
 
 export HTTPD_START_SERVERS=${HTTPD_START_SERVERS:-8}
 export HTTPD_MAX_SPARE_SERVERS=$((HTTPD_START_SERVERS+10))
@@ -56,6 +56,8 @@ fi
 
 envsubst < /opt/app-root/etc/conf.d/50-mpm-tuning.conf.template > /opt/app-root/etc/conf.d/50-mpm-tuning.conf
 envsubst < /opt/app-root/etc/conf.d/00-documentroot.conf.template > /opt/app-root/etc/conf.d/00-documentroot.conf
+
+chmod -r 777 storage
 
 echo "Migrating DB ..."
 php artisan migrate
