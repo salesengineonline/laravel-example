@@ -15,9 +15,6 @@ if [ -f composer.json ]; then
     ./composer.phar install --quiet --no-interaction --no-ansi --no-scripts --optimize-autoloader
 
 
-    echo "---> Setup mcrypt ..."
-    echo "mcrypt.modes_dir=/lib64/libmcrypt.so.4" >> /opt/rh/php55/root/etc/php.d/mcrypt.ini
-
     echo "---> Permissions for storage... "
     chmod -R 777 storage
 
