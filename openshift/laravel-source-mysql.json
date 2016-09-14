@@ -79,7 +79,7 @@
           "sourceStrategy": {
             "from": {
               "kind": "ImageStream",
-              "name": "php-55-centos7"
+              "name": "php-55-centos7extra"
             }
           }
         },
