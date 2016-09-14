@@ -6,7 +6,7 @@ echo "---> Installing Laravel 5 application source"
 cp -Rf /tmp/src/. ./
 
 if [ -f composer.json ]; then
-    echo "Installing dependencies from composer.json... "
+    echo "---> Installing dependencies from composer.json... "
 
     # Install Composer
     php -r "readfile('https://getcomposer.org/installer');" | php
@@ -14,10 +14,10 @@ if [ -f composer.json ]; then
     # Install App dependencies using Composer
     ./composer.phar install --no-interaction --no-ansi --no-scripts --optimize-autoloader
 
-    echo "Permissions for storage... "
+    echo "---> Permissions for storage... "
     chmod -R 777 storage
 
-    echo "Generating key... "
+    echo "---> Generating key... "
     php artisan key:generate
 
     if [ ! -f composer.lock ]; then
