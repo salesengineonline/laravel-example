@@ -19,7 +19,7 @@ if [ -f composer.json ]; then
     chmod -R 777 storage
 
     echo "Migrating DB ..."
-    php artisan migrate
+    # php artisan migrate
 
     if [ ! -f composer.lock ]; then
 	   echo -e "\nConsider adding a composer.lock file into your source repository\n"
