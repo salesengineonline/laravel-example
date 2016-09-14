@@ -80,7 +80,7 @@ return [
 
 	'key' => env('APP_KEY', 'eaAJlaAlABGDmSOIOoBKZBuwZnGdjYMn'),
 
-	'cipher' => 'MCRYPT_BLOWFISH',
+	'cipher' => 'AES-256-CBC',
 
 	/*
 	|--------------------------------------------------------------------------
