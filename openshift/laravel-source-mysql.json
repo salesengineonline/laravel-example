@@ -270,7 +270,7 @@
         }
       },
       "spec": {
-        "dockerImageRepository": "smartlifeapp/sti-php-extra"
+        "dockerImageRepository": "getupcloud/sti-php-extra"
       }
     }
   ],
