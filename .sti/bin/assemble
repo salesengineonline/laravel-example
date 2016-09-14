@@ -15,7 +15,12 @@ if [ -f composer.json ]; then
 
     # Install App dependencies using Composer
     ./composer.phar install --no-interaction --no-ansi --no-scripts --optimize-autoloader
-    
+
+    chmod -R 777 storage
+
+    echo "Migrating DB ..."
+    php artisan migrate
+
     if [ ! -f composer.lock ]; then
 	   echo -e "\nConsider adding a composer.lock file into your source repository\n"
     fi

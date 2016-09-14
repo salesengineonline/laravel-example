@@ -2,7 +2,7 @@
 
 export_vars=$(cgroup-limits); export $export_vars
 export DOCUMENTROOT=${DOCUMENTROOT:-/}
-# Default php.ini configuration values, all taken 
+# Default php.ini configuration values, all taken
 # from php defaults.
 export ERROR_REPORTING=${ERROR_REPORTING:-E_ALL & ~E_NOTICE}
 export DISPLAY_ERRORS=${DISPLAY_ERRORS:-ON}
@@ -13,7 +13,7 @@ export INCLUDE_PATH=${INCLUDE_PATH:-.:/opt/app-root/src:/opt/rh/php55/root/usr/s
 export SESSION_PATH=${SESSION_PATH:-/tmp/sessions}
 export SHORT_OPEN_TAG=${SHORT_OPEN_TAG:-ON}
 # TODO should be dynamically calculated based on container memory limit/16
-export OPCACHE_MEMORY_CONSUMPTION=${OPCACHE_MEMORY_CONSUMPTION:-16M} 
+export OPCACHE_MEMORY_CONSUMPTION=${OPCACHE_MEMORY_CONSUMPTION:-16M}
 
 export OPCACHE_REVALIDATE_FREQ=${OPCACHE_REVALIDATE_FREQ:-2}
 
@@ -57,10 +57,7 @@ fi
 envsubst < /opt/app-root/etc/conf.d/50-mpm-tuning.conf.template > /opt/app-root/etc/conf.d/50-mpm-tuning.conf
 envsubst < /opt/app-root/etc/conf.d/00-documentroot.conf.template > /opt/app-root/etc/conf.d/00-documentroot.conf
 
-chmod -R 777 storage
 
-echo "Migrating DB ..."
-php artisan migrate
 
 
 echo "Starting apache"
