@@ -57,6 +57,9 @@ fi
 envsubst < /opt/app-root/etc/conf.d/50-mpm-tuning.conf.template > /opt/app-root/etc/conf.d/50-mpm-tuning.conf
 envsubst < /opt/app-root/etc/conf.d/00-documentroot.conf.template > /opt/app-root/etc/conf.d/00-documentroot.conf
 
+echo "---> Setup mcrypt ..."
+echo "mcrypt.modes_dir=/lib64/libmcrypt.so.4" >> /opt/rh/php55/root/etc/php.d/mcrypt.ini
+
 echo "---> Migrating DB ..."
 php artisan migrate
 
