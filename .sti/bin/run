@@ -2,8 +2,7 @@
 
 export_vars=$(cgroup-limits); export $export_vars
 export DOCUMENTROOT=${DOCUMENTROOT:-/}
-
-# Default php.ini configuration values, all taken
+# Default php.ini configuration values, all taken 
 # from php defaults.
 export ERROR_REPORTING=${ERROR_REPORTING:-E_ALL & ~E_NOTICE}
 export DISPLAY_ERRORS=${DISPLAY_ERRORS:-ON}
@@ -14,7 +13,7 @@ export INCLUDE_PATH=${INCLUDE_PATH:-.:/opt/app-root/src:/opt/rh/php55/root/usr/s
 export SESSION_PATH=${SESSION_PATH:-/tmp/sessions}
 export SHORT_OPEN_TAG=${SHORT_OPEN_TAG:-ON}
 # TODO should be dynamically calculated based on container memory limit/16
-export OPCACHE_MEMORY_CONSUMPTION=${OPCACHE_MEMORY_CONSUMPTION:-16M}
+export OPCACHE_MEMORY_CONSUMPTION=${OPCACHE_MEMORY_CONSUMPTION:-16M} 
 
 export OPCACHE_REVALIDATE_FREQ=${OPCACHE_REVALIDATE_FREQ:-2}
 
@@ -26,6 +25,19 @@ envsubst < /opt/app-root/etc/php.d/opcache.ini.template > /opt/rh/php55/root/etc
 
 export HTTPD_START_SERVERS=${HTTPD_START_SERVERS:-8}
 export HTTPD_MAX_SPARE_SERVERS=$((HTTPD_START_SERVERS+10))
+export ENABLE_MULTISITE=${ENABLE_MULTISITE:-false}
+
+MSCONFIG=/opt/rh/httpd24/root/etc/httpd/conf.d/multisite.conf
+
+if [ $ENABLE_MULTISITE == "true" ]; then
+  echo "Enabling Multisite Module!"
+  echo '<IfModule mod_vhost_alias.c>
+    UseCanonicalName Off
+    VirtualDocumentRoot /opt/app-root/src/%0
+    </IfModule>' > $MSCONFIG
+else
+  > $MSCONFIG
+fi
 
 if [ -n "${NO_MEMORY_LIMIT:-}" -o -z "${MEMORY_LIMIT_IN_BYTES:-}" ]; then
   #
@@ -44,7 +56,6 @@ fi
 
 envsubst < /opt/app-root/etc/conf.d/50-mpm-tuning.conf.template > /opt/app-root/etc/conf.d/50-mpm-tuning.conf
 envsubst < /opt/app-root/etc/conf.d/00-documentroot.conf.template > /opt/app-root/etc/conf.d/00-documentroot.conf
-
 set -e
 
 echo "Migrating DB ..."
