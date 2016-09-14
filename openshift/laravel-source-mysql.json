@@ -264,13 +264,13 @@
       "kind": "ImageStream",
       "apiVersion": "v1",
       "metadata": {
-        "name": "php-55-centos7",
+        "name": "php-55-centos7extra",
         "annotations": {
           "description": "Keeps track of changes in the PHP base image."
         }
       },
       "spec": {
-        "dockerImageRepository": "openshift/php-55-centos7"
+        "dockerImageRepository": "smartlifeapp/sti-php-extra"
       }
     }
   ],
