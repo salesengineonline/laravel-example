@@ -273,7 +273,7 @@
         "dockerImageRepository": "getupcloud/sti-php-extra",
         "tags": [
          {
-            "name": "5.6"
+            "name": "5.5"
          }
         ]
       }
