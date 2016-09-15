@@ -13,7 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home','PagesController@home')->name('home');
+Route::get('home','PagesController@home');
 
 // Route::get('/', [
 //     'as' => 'home',
