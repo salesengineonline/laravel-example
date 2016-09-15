@@ -253,7 +253,7 @@ $ git push</pre>
                   <p>
                   It will also be necessary to update your application to talk to your database back-end.  The <code>config/database.yml</code> file used by rails was set up in such a way that it will accept environment variables for your connection information that you pass to it.
                   Once an administrator has created a PostgreSQL database service for you to connect with you can add the following environment variables to your deploymentConfig to ensure all your frontend pods have access to these environment variables.
-                  
+
 <pre>osc env dc/frontend DATABASE_SERVICE_HOST=&lt;database service ip&gt;
 osc env dc/frontend DATABASE_SERVICE_POST=&lt;database service port&gt;
 osc env dc/frontend POSTGRESQL_DATABASE=&lt;your created database&gt;
@@ -278,8 +278,8 @@ osc env dc/frontend POSTGRESQL_PASSWORD=&lt;your database user's password&gt;</p
                 <p>Now it is time to add your own code. Follow along the <a href="http://laravel.com/docs/5.0">Laravel</a> tutorial to learn more about Laravel.</p>
 
                 <h2>Server hostname: {{ $data->hostname }} </h2>
-                <h3>Database server: {{ $data->engine }} {{$data->socket}} </h3>
-				
+                <h3>Database server: {{ $data->engine }} </h3>
+
 
           </section>
         </div>
