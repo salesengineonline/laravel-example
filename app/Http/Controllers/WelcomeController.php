@@ -20,11 +20,11 @@ class WelcomeController extends Controller {
 			$socket = getenv('DATABASE_SERVICE_HOST') . ":" . getenv('DATABASE_SERVICE_PORT');
 		}
 
-		$data = array('engine' => $engine, 
+		$data = array('engine' => $engine,
 					 	'socket' => $socket,
 					 	'hostname' => $hostname);
 
-		return view('welcome')->with($data);
+		return view('welcome')->with(['data'=>$data]);
 	}
 
 }
