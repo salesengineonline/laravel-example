@@ -277,8 +277,8 @@ osc env dc/frontend POSTGRESQL_PASSWORD=&lt;your database user's password&gt;</p
 
                 <p>Now it is time to add your own code. Follow along the <a href="http://laravel.com/docs/5.0">Laravel</a> tutorial to learn more about Laravel.</p>
 
-                <h2>Server hostname: {{ $data->hostname }} </h2>
-                <h3>Database server: {{ $data->engine }} </h3>
+                <h2>Server hostname: {{ $data['hostname'] }} </h2>
+                <h3>Database server: {{ $data['engine'] }} </h3>
 
 
           </section>
